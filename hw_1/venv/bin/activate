@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/bender/work/otus_python_auto_qa/hw_1/venv"
+VIRTUAL_ENV="/home/dmitriylysenko/mds/otus/otus_python_auto_qa/hw_1/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

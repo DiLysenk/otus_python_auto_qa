@@ -1,4 +1,4 @@
-#!/home/bender/work/otus_python_auto_qa/hw_1/venv/bin/python
+#!/home/dmitriylysenko/mds/otus/otus_python_auto_qa/hw_1/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
