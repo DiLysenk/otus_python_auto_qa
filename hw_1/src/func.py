@@ -21,10 +21,9 @@ class Triangle(Figure):
     angles = 3
 
     def __init__(self, a, b, c):
-
-        self.a = a
-        self.b = b
-        self.c = c
+        self.a = int(a)
+        self.b = int(b)
+        self.c = int(c)
         self.perimetr = self.a + self.b + self.c
         super().__init__()
 
@@ -38,8 +37,8 @@ class Rectangle(Figure):
     angles = 4
 
     def __init__(self, a, b):
-        self.a = a
-        self.b = b
+        self.a = int(a)
+        self.b = int(b)
         self.perimetr = (self.a + self.b) * 2
         super().__init__()
 
@@ -53,7 +52,7 @@ class Square(Figure):
     angles = 4
 
     def __init__(self, a):
-        self.a = a
+        self.a = int(a)
         self.perimetr = self.a * 4
         super().__init__()
 
@@ -66,7 +65,7 @@ class Circle(Figure):
     angles = 0
 
     def __init__(self, r):
-        self.r = r
+        self.r = int(r)
         self.perimetr = 2 * 3.14 * self.r
         super().__init__()
 
@@ -74,4 +73,5 @@ class Circle(Figure):
         return 3.14 * (self.r ** 2)
 
 
-
+c = Circle(4)
+print(c.name)
