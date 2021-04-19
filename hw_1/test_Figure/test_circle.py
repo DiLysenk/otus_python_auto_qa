@@ -1,22 +1,24 @@
-from src.func import Square, Circle
+import pytest
+from hw_1.src.func import Square
 
+square = Square(3)
 
-
-squre = Square(3)
-circle = Circle(3)
-
-def test_name():
+@pytest.mark.parametrize('r', ('3'))
+def test_name(circle, r):
     assert circle.name == 'Круг'
 
-def test_angels():
+@pytest.mark.parametrize('r', ('3'))
+def test_angels(circle, r):
     assert circle.angles == 0
 
-def test_perimetr():
+@pytest.mark.parametrize('r', ('3'))
+def test_perimetr(circle, r):
     assert circle.perimetr == 18.84
 
-
-def test_area():
+@pytest.mark.parametrize('r', ('3'))
+def test_area(circle, r):
     assert circle.area == 28.26
 
-def test_add_area():
-    assert circle.add_area(squre) == 37.260000000000005
+@pytest.mark.parametrize('r', ('3'))
+def test_add_area(circle, r):
+    assert circle.add_area(square) == 37.260000000000005

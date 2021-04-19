@@ -1,22 +1,26 @@
-from src.func import Rectangle, Square
+import pytest
+from hw_1.src.func import Square
 
-
-rectangle = Rectangle(2, 3)
 square = Square(3)
 
-
-def test_name():
+@pytest.mark.parametrize('a, b', [('2', '3'),
+                         ('4', '9')])
+def test_name(rectangle, a, b):
     assert rectangle.name == 'Прямоугольник'
 
-def test_angels():
+
+@pytest.mark.parametrize('a, b', [('2', '3')])
+def test_angels(rectangle, a, b):
     assert rectangle.angles == 4
 
-def test_perimetr():
+@pytest.mark.parametrize('a, b', [('2', '3')])
+def test_perimetr(rectangle, a, b):
     assert rectangle.perimetr == 10
 
-
-def test_area():
+@pytest.mark.parametrize('a, b', [('2', '3')])
+def test_area(rectangle, a, b):
     assert rectangle.area == 6
 
-def test_add_area():
+@pytest.mark.parametrize('a, b', [('2', '3')])
+def test_add_area(rectangle, a, b):
     assert rectangle.add_area(square) == 15
