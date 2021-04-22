@@ -19,6 +19,8 @@ with open('../users-39204-8e2f95.json', 'r') as users_file:
         dict_target = dict(zip(['name', 'gender', 'address'], target))
         list_users.append(dict_target)
 
+
+
 with open('../books-39204-271043.csv', 'r') as books_file:
     reader = DictReader(books_file)
     header = reader.fieldnames[0:2]
@@ -29,22 +31,28 @@ with open('../books-39204-271043.csv', 'r') as books_file:
         book = dict(zip(header, title))
         list_books.append(book)
 
+
+# собираем users и books
 for user in list_users:
     for book in list_books:
         user.setdefault('books', book)
         list_total.append(user)
+        break
+
+
+
+
 
 
 
 # список с книгами
 print('len______--', len(list_users), len(list_books))
-print(list_users)
-print(list_books)
-
-print(list_total[0])
+print("list users", list_users)
+print("list books", list_books)
 
 
-
+for i in list_total:
+    print(i)
 
 
 
