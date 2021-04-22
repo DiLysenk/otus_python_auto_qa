@@ -33,13 +33,13 @@ with open('../books-39204-271043.csv', 'r') as books_file:
 
 
 # собираем users и books
-for user in list_users:
-    for book in list_books:
-        user.setdefault('books', book)
-        list_total.append(user)
-        break
 
-
+for _ in range(len(list_users)):
+    if _ <= 5:
+        list_users[_].setdefault('books', list_books[_])
+    else:
+        list_users[_].setdefault('books', None)
+    list_total.append(list_users[_])
 
 
 
@@ -47,12 +47,12 @@ for user in list_users:
 
 # список с книгами
 print('len______--', len(list_users), len(list_books))
-print("list users", list_users)
-print("list books", list_books)
+
 
 
 for i in list_total:
     print(i)
+
 
 
 
