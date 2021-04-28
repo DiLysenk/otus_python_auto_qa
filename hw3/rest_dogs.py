@@ -4,6 +4,7 @@ import requests
 import pytest
 
 
+di
 @pytest.fixture
 def get_api(end_point):
     return requests.get(end_point) # response содержит уже все хедеры и тд
