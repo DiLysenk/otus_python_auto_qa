@@ -3,17 +3,16 @@ import pytest
 from deepdiff import DeepDiff
 from jsonschema import validate
 
-
-@pytest.mark.parametrize("end_point", ['https://dog.ceo/api/breeds/list/all',
-                                       'https://dog.ceo/api/breeds/image/random',
-                                       'https://dog.ceo/api/breed/hound/images',
-                                       'https://dog.ceo/api/breed/hound/list',
-                                       'https://dog.ceo/api/breed/boxer/images/random'])
-def test_dog_api_status(response_get, end_point):
+# проверка 200
+def test_dog_api_status(response_get):
     assert response_get.status_code == 200
 
+# проверка статуса "success"
+def test_dog_api_include_success(response_get):
+    assert "success" in response_get.json().get('status')
 
-# Валидация схемы jsonschema validate
+
+# Валидация части схемы jsonschema validate
 @pytest.mark.parametrize("end_point", ['https://dog.ceo/api/breeds/list/all'])
 def test_dog_api_schema(response_get, end_point):
     schema = {
@@ -23,13 +22,13 @@ def test_dog_api_schema(response_get, end_point):
             'status': {"type": "string"},
         },
         'required': ['status'],  # обязательные поля
-        'maxProperties': 2  # максимальное количесвто
+        'maxProperties': 2  # максимальное количество
     }
     # validate возвращает None поэту assert не используем
     validate(instance=response_get.json(), schema=schema)
 
 
-# Валидация схемы с помощью cerberus
+# Валидация части схемы с помощью cerberus
 @pytest.mark.parametrize("end_point", ['https://dog.ceo/api/breeds/list/all'])
 def test_dog_api_schema_cerebrus(response_get, end_point):
     schema_c = {
@@ -39,16 +38,9 @@ def test_dog_api_schema_cerebrus(response_get, end_point):
     v = cerberus.Validator()
     assert v.validate(response_get.json(), schema_c)
 
-
-# Валидация 'status': 'success'
-@pytest.mark.parametrize("end_point", ['https://dog.ceo/api/breeds/list/all'])
-def test_dog_api_include_success(response_get, end_point):
-    assert "success" in response_get.json().get('status')
-
-
+#валидация части схемы с помощью diff
 @pytest.mark.parametrize("end_point", ['https://dog.ceo/api/breeds/list/all'])
 def test_dog_api_data(response_get, end_point):
-
     expected_result = {
         'message': '',
         'status': 'success'
@@ -56,3 +48,5 @@ def test_dog_api_data(response_get, end_point):
     diff = DeepDiff(expected_result, response_get.json(), exclude_paths="root['message']")
     print(diff.pretty())
     assert not diff, diff.pretty()
+
+
