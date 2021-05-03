@@ -1,8 +1,8 @@
 import requests
 from pytest import fixture
-from hw_3.src import get_end_points
 
-with open("./end_points", 'r') as params:
+
+with open("/home/bender/work/otus_python_auto_qa/hw_3/test_jsonplaceholder_api/end_points", 'r') as params:
     list_params = params.readlines()
     list_endpoints = [i.strip('\n') for i in list_params]
 
@@ -12,4 +12,4 @@ def get_end_point(request):
 
 @fixture
 def response_get(end_point):
-    return requests.get(end_point)  # response содержит уже все хедеры и тд
+    return requests.get(end_point)  # response содержит уже все хедеры и тело

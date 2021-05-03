@@ -1,8 +1,8 @@
 import requests
 from pytest import fixture
-from hw_3.src import get_end_points
 
-with open("./end_points", 'r') as params:
+
+with open("/home/bender/work/otus_python_auto_qa/hw_3/test_dogs_api/end_points", 'r') as params:
     list_params = params.readlines()
     list_endpoints = [i.strip('\n') for i in list_params]
 
