@@ -5,6 +5,7 @@ from jsonschema import validate
 
 v = cerberus.Validator()
 
+
 # проверка 200
 def test_brewery_api_status(response_get):
     assert response_get.status_code == 200
@@ -67,6 +68,7 @@ def test_brewery_api_schema_cerebrus(response_get, end_point):
     }
     assert v.validate(response_get.json(), schema)
 
+
 @pytest.mark.parametrize("end_point", ['https://api.openbrewerydb.org/breweries/autocomplete?query=dog'])
 def test_brewery_autocomplete(response_get, end_point):
     schema = {
@@ -74,6 +76,7 @@ def test_brewery_autocomplete(response_get, end_point):
         "name": {'type': 'string'}
     }
     assert v.validate(response_get.json()[0], schema)
+
 
 @pytest.mark.parametrize('end_point', ["https://api.openbrewerydb.org/breweries/search?query=Flix_Brewhouse"])
 def test_brewery_search(response_get, end_point):
