@@ -4,3 +4,8 @@
 /venv
 /.idea
 /hw_1/__pycache__
+/hw_3/test_brewery_api/__pycache__
+/hw_3/test_dogs_api/__pycache__
+/hw_3/test_jsonplaceholder_api/__pycache__
+/hw_3/test_yandex_api/__pycache__
+/__pycache__
