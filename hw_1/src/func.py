@@ -25,7 +25,7 @@ class Triangle(Figure):
         self.b = int(b)
         self.c = int(c)
         self.perimetr = self.a + self.b + self.c
-        super().__init__()
+        super().__init__() # тут я вызывал исполняемую функцию и родительского класса
 
     def area_s(self):
         return math.sqrt(self.perimetr * (self.perimetr - self.a) *
